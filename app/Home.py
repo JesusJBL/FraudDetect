@@ -11,7 +11,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 def read_file():
-    df = pd.read_pickle('../data/df.pkl')
+    df = pd.read_pickle('data/df.pkl')
     return df
 
 def filter_count(df, column, values):
@@ -49,7 +49,7 @@ def runModel(text, model):
     if not text.strip():
         st.session_state["model_output"] = 'No text found. Please try again'
     else:
-        vectorizer_full = load('../data/vectorizer_fit.joblib')
+        vectorizer_full = load('data/vectorizer_fit.joblib')
         print("TYPE", type(vectorizer_full)) 
         text_df = pd.DataFrame({'text':[text]})
 
@@ -76,8 +76,8 @@ def main():
     prompt = ''
     
     df = read_file()
-    model = load('../data/log_model_fit.joblib')
-    vectorizer_full = load('../data/vectorizer_fit.joblib')
+    model = load('data/log_model_fit.joblib')
+    vectorizer_full = load('data/vectorizer_fit.joblib')
     st.set_page_config(page_title="Fraudulent Job Posting Detection App", initial_sidebar_state="collapsed", layout="wide")
     with st.container():
         print(type(vectorizer_full))
